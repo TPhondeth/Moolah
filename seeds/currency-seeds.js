@@ -48,7 +48,7 @@ const currencyData = [
         currency: 'BNB',
         currency_name: 'Binance Coin',
         price: 358.44
-    }
+    },
     {
         currency: 'DOGE',
         currency_name: 'Dogecoin',
