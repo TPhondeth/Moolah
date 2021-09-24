@@ -56,6 +56,6 @@ const currencyData = [
     }
 ];
 
-const seedCurrency = () => Currency.bulkCreate(currencyData);
+const seedCurrencies = () => Currency.bulkCreate(currencyData);
 
-module.exports = seedCurrency;
+module.exports = seedCurrencies;
