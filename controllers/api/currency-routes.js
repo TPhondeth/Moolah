@@ -2,6 +2,7 @@ const router = require('express').Router();
 const {
     Currency
 } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // Get all currencies
 router.get('/', (req, res) => {
