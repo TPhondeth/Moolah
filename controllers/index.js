@@ -4,5 +4,5 @@ const apiRoutes = require('./api/');
 
 
 router.use('/api', apiRoutes);
-//exporting file
+//exported file router
 module.exports = router;
