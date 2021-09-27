@@ -12,7 +12,14 @@ const PORT = process.env.PORT || 3001;
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
+app.use(express.json());
+app.use(express.urlencoded({
+    extended: false
+}));
+
+app.use(require('./controllers/'));
+
 // Sync sequelize models to the database, then turn on the server
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: true }).then(() => {
     app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
 });
