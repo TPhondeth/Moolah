@@ -1,47 +1,61 @@
 const router = require('express').Router();
+const sequelize = require('../../config/connection');
 const {
-    Currency
+    Post,
+    User
 } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// Get all currencies
+// Get all posts
 router.get('/', (req, res) => {
-    Currency.findAll({
+    Post.findAll({
             attributes: [
                 'id',
-                'currency',
-                'currency_name',
-                'price',
+                'title',
+                'post_text',
+                'created_at',
+            ],
+            include: [
+                {
+                        model: User,
+                        attributes: ['username']
+                    }
             ]
         })
-        .then(dbCurrencyData => res.json(dbCurrencyData))
+        .then(dbPostData => res.json(dbPostData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
         });
 });
 
-// Get currency by id
+// Get single post
 router.get('/:id', (req, res) => {
-    Currency.findOne({
+    Post.findOne({
             where: {
                 id: req.params.id
             },
             attributes: [
                 'id',
-                'currency',
-                'currency_name',
-                'price',
+                'title',
+                'post_text',
+                'created_at',
+            ],
+            include: [
+                {
+                        model: User,
+                        attributes: ['username']
+                    }
             ]
         })
-        .then(dbCurrencyData => {
-            if (!dbCurrencyData) {
+        .then(dbPostData => {
+            if (!dbPostData) {
                 res.status(404).json({
-                    message: 'No currency found with this id'
+                    message: 'No post found with this id'
                 });
                 return;
             }
-            res.json(dbCurrencyData);
+            res.json(dbPostData);
         })
         .catch(err => {
             console.log(err);
@@ -49,38 +63,38 @@ router.get('/:id', (req, res) => {
         });
 });
 
-// Add new currency
+// Create new post
 router.post('/', withAuth, (req, res) => {
-    // expects {currency: 'BTC', currency_name: 'BITCOIN', price: 43016.58}
-    Currency.create({
-            currency: req.body.currency,
-            currency_name: req.body.currency_name,
-            price: req.session.price
+    Post.create({
+            title: req.body.title,
+            post_text: req.body.post_text,
+            user_id: req.session.user_id
         })
-        .then(dbCurrencyData => res.json(dbCurrencyData))
+        .then(dbPostData => res.json(dbPostData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
         });
 });
 
-// Update currency
+// Update post
 router.put('/:id', withAuth, (req, res) => {
-    Currency.update({
-            currency: req.body.currency
+    Post.update({
+            title: req.body.title,
+            post_text: req.body.post_text
         }, {
             where: {
                 id: req.params.id
             }
         })
-        .then(dbCurrencyData => {
-            if (!dbCurrencyData) {
+        .then(dbPostData => {
+            if (!dbPostData) {
                 res.status(404).json({
-                    message: 'No currency found with this id'
+                    message: 'No post found with this id'
                 });
                 return;
             }
-            res.json(dbCurrencyData);
+            res.json(dbPostData);
         })
         .catch(err => {
             console.log(err);
@@ -88,21 +102,21 @@ router.put('/:id', withAuth, (req, res) => {
         });
 });
 
-// Delete currency
+// Delete post
 router.delete('/:id', withAuth, (req, res) => {
-    Currency.destroy({
+    Post.destroy({
             where: {
                 id: req.params.id
             }
         })
-        .then(dbCurrencyData => {
-            if (!dbCurrencyData) {
+        .then(dbPostData => {
+            if (!dbPostData) {
                 res.status(404).json({
-                    message: 'No currency found with this id'
+                    message: 'No post found with this id'
                 });
                 return;
             }
-            res.json(dbCurrencyData);
+            res.json(dbPostData);
         })
         .catch(err => {
             console.log(err);
