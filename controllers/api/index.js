@@ -8,7 +8,7 @@ const exchangeRoutes = require('./exchange-routes');
 router.use('/users', userRoutes);
 router.use('/currencies', currencyRoutes);
 router.use('/posts', postRoutes);
-router.use('./exchanges', exchangeRoutes);
+router.use('/exchanges', exchangeRoutes);
 
 
 module.exports = router;

@@ -1,8 +1,6 @@
 const router = require('express').Router();
 const {
-    Currency,
-    User,
-    Post
+    Exchange
 } = require('../../models');
 const withAuth = require('../../utils/auth');
 
@@ -14,15 +12,6 @@ router.get('/', (req, res) => {
                 'exchange',
                 'impact_score',
                 'rating',
-            ],
-            include: [{
-                    model: Currency,
-                    attributes: ['id', 'currency', 'currency_name', 'price'],
-                    include: {
-                        model: User,
-                        attributes: ['username']
-                    }
-                }
             ]
         })
         .then(dbExchangeData => res.json(dbExchangeData))
@@ -43,21 +32,12 @@ router.get('/:id', (req, res) => {
                 'exchange',
                 'impact_score',
                 'rating',
-            ],
-            include: [{
-                    model: Currency,
-                    attributes: ['id', 'currency', 'currency_name', 'price'],
-                    include: {
-                        model: User,
-                        attributes: ['username']
-                    }
-                }
             ]
         })
         .then(dbExchangeData => {
             if (!dbExchangeData) {
                 res.status(404).json({
-                    message: 'No post found with this id'
+                    message: 'No exchange found with this id'
                 });
                 return;
             }
@@ -96,7 +76,7 @@ router.put('/:id', withAuth, (req, res) => {
         .then(dbExchangeData => {
             if (!dbExchangeData) {
                 res.status(404).json({
-                    message: 'No currency found with this id'
+                    message: 'No exchange found with this id'
                 });
                 return;
             }
@@ -118,7 +98,7 @@ router.delete('/:id', withAuth, (req, res) => {
         .then(dbExchangeData => {
             if (!dbExchangeData) {
                 res.status(404).json({
-                    message: 'No currency found with this id'
+                    message: 'No exchange found with this id'
                 });
                 return;
             }
