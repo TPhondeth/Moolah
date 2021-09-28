@@ -1,61 +1,67 @@
 const router = require('express').Router();
 const {
     Currency,
-    Exchange,
-    User
+    User,
+    Post
 } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// Get all currencies
+// Get all exchanges
 router.get('/', (req, res) => {
-    Currency.findAll({
+    Exchange.findAll({
             attributes: [
                 'id',
-                'currency',
-                'currency_name',
-                'price',
+                'exchange',
+                'impact_score',
+                'rating',
             ],
-            include: [
-                {
-                    model: User,
-                    attributes: ['username']
+            include: [{
+                    model: Currency,
+                    attributes: ['id', 'currency', 'currency_name', 'price'],
+                    include: {
+                        model: User,
+                        attributes: ['username']
+                    }
                 }
             ]
         })
-        .then(dbCurrencyData => res.json(dbCurrencyData))
+        .then(dbExchangeData => res.json(dbExchangeData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
         });
 });
 
-// Get currency by id
+// Get exchange by id
 router.get('/:id', (req, res) => {
-    Currency.findOne({
+    Exchange.findOne({
             where: {
                 id: req.params.id
             },
             attributes: [
                 'id',
-                'currency',
-                'currency_name',
-                'price',
+                'exchange',
+                'impact_score',
+                'rating',
             ],
-            include: [
-                {
-                    model: User,
-                    attributes: ['username']
+            include: [{
+                    model: Currency,
+                    attributes: ['id', 'currency', 'currency_name', 'price'],
+                    include: {
+                        model: User,
+                        attributes: ['username']
+                    }
                 }
             ]
         })
-        .then(dbCurrencyData => {
-            if (!dbCurrencyData) {
+        .then(dbExchangeData => {
+            if (!dbExchangeData) {
                 res.status(404).json({
-                    message: 'No currency found with this id'
+                    message: 'No post found with this id'
                 });
                 return;
             }
-            res.json(dbCurrencyData);
+            res.json(dbExchangeData);
         })
         .catch(err => {
             console.log(err);
@@ -63,38 +69,38 @@ router.get('/:id', (req, res) => {
         });
 });
 
-// Add new currency
+// Add new exchange
 router.post('/', withAuth, (req, res) => {
-    // expects {currency: 'BTC', currency_name: 'BITCOIN', price: 43016.58}
-    Currency.create({
-            currency: req.body.currency,
-            currency_name: req.body.currency_name,
-            price: req.session.price
+    // expects {exchange: 'Binance', impact_score: '10.00', rating: A}
+    Exchange.create({
+            exchange: req.body.exchange,
+            impact_score: req.body.impact_score,
+            rating: req.session.rating
         })
-        .then(dbCurrencyData => res.json(dbCurrencyData))
+        .then(dbExchangeData => res.json(dbExchangeData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
         });
 });
 
-// Update currency
+// Update exchange
 router.put('/:id', withAuth, (req, res) => {
-    Currency.update({
-            currency: req.body.currency
+    Exchange.update({
+            exchange: req.body.exchange
         }, {
             where: {
                 id: req.params.id
             }
         })
-        .then(dbCurrencyData => {
-            if (!dbCurrencyData) {
+        .then(dbExchangeData => {
+            if (!dbExchangeData) {
                 res.status(404).json({
                     message: 'No currency found with this id'
                 });
                 return;
             }
-            res.json(dbCurrencyData);
+            res.json(dbExchangeData);
         })
         .catch(err => {
             console.log(err);
@@ -102,21 +108,21 @@ router.put('/:id', withAuth, (req, res) => {
         });
 });
 
-// Delete currency
+// Delete exchange
 router.delete('/:id', withAuth, (req, res) => {
-    Currency.destroy({
+    Exchange.destroy({
             where: {
                 id: req.params.id
             }
         })
-        .then(dbCurrencyData => {
-            if (!dbCurrencyData) {
+        .then(dbExchangeData => {
+            if (!dbExchangeData) {
                 res.status(404).json({
                     message: 'No currency found with this id'
                 });
                 return;
             }
-            res.json(dbCurrencyData);
+            res.json(dbExchangeData);
         })
         .catch(err => {
             console.log(err);
