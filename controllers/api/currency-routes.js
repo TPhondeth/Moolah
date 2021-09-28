@@ -3,6 +3,7 @@ const {
     Currency
 } = require('../../models');
 const withAuth = require('../../utils/auth');
+const get_asset = require('../../public/javascript/currency');
 
 // Get all currencies
 router.get('/', (req, res) => {
@@ -11,7 +12,7 @@ router.get('/', (req, res) => {
                 'id',
                 'currency',
                 'currency_name',
-                'price',
+                'price'
             ]
         })
         .then(dbCurrencyData => res.json(dbCurrencyData))
