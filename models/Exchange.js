@@ -24,7 +24,7 @@ Exchange.init({
     },
     rating: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
     }
 }, {
     sequelize,

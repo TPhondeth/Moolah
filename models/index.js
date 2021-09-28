@@ -22,9 +22,6 @@ User.hasMany(Post, {
     foreignKey: 'user_id'
 });
 
-Currency.belongsTo(Exchange, {
-    foreignKey: 'exchange_id'
-})
 
 module.exports = {
     User,
