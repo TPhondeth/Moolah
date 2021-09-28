@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const {
     Currency,
+    Exchange,
     User
 } = require('../../models');
 const withAuth = require('../../utils/auth');
