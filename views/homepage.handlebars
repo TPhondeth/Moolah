@@ -1,9 +1,9 @@
-<!-- Personal Wallet-->
-<div class="container" id="wallet">
-  <div class="row" id="wallet">
+<!-- Dash Board-->
+<div class="container" id="dashboard">
+  <div class="row" id="dashboard">
     <div class="col-12">
-      <h2 style="text-align: center;">PERSONAL HOLDINGS</h2>
-      <table style="width: 100%;" id="wallet">
+      <h2 style="text-align: center;">Exchange Rate</h2>
+      <table style="width: 100%;" id="dashboard">
         <tr>
           <th>Name</th>
           <th>Price</th>
@@ -12,21 +12,12 @@
           <th>Impact Score</th>
           <th>Rating</th>
         </tr>
-        {{#if loggedIn}}
-        {{#if Bitcoin}}
-        <tr>
-          <td>Bitcoin (BTC)</td>
-          <td>${{bitcoin price link here}}</td>
-          <td>${{object based on user code}}</td>
-          <td>${{function multiply object by price}}</td>
-          <td>${{impact score}}</td>
-          <td>${{rating}}</td>
-        </tr>
-
-      </table>
+        {{>homepagefiller post-list}}
+      </table>  
     </div>
   </div>
-
-
-
 </div>
+
+{{#if loggedIn}}
+<button type="submit" class="button">Go To Wallet</button>
+{{/if}}
