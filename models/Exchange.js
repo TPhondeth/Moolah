@@ -23,7 +23,7 @@ Exchange.init({
         allowNull: false
     },
     rating: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
     }
 }, {

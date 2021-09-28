@@ -2,6 +2,7 @@
 const Currency = require('./Currency');
 const Post = require('./Post');
 const User = require('./User');
+const Exchange = require('./Exchange');
 
 
 // Create associations
@@ -24,5 +25,6 @@ User.hasMany(Post, {
 module.exports = {
     User,
     Post,
-    Currency
+    Currency,
+    Exchange
 };
