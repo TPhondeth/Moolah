@@ -1,0 +1,32 @@
+<!-- Personal Wallet-->
+<div class="container" id="wallet">
+  <div class="row" id="wallet">
+    <div class="col-12">
+      <h2 style="text-align: center;">PERSONAL HOLDINGS</h2>
+      <table style="width: 100%;" id="wallet">
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity Held</th>
+          <th>Holding Value</th>
+          <th>Impact Score</th>
+          <th>Rating</th>
+        </tr>
+        {{#if loggedIn}}
+        {{#if Bitcoin}}
+        <tr>
+          <td>Bitcoin (BTC)</td>
+          <td>${{bitcoin price link here}}</td>
+          <td>${{object based on user code}}</td>
+          <td>${{function multiply object by price}}</td>
+          <td>${{impact score}}</td>
+          <td>${{rating}}</td>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+
+
+
+</div>
