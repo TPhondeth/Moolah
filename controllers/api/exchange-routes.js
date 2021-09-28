@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const {
+    Exchange,
     Currency,
     User,
-    Post
 } = require('../../models');
 const withAuth = require('../../utils/auth');
 
@@ -57,7 +57,7 @@ router.get('/:id', (req, res) => {
         .then(dbExchangeData => {
             if (!dbExchangeData) {
                 res.status(404).json({
-                    message: 'No post found with this id'
+                    message: 'No exchange found with this id'
                 });
                 return;
             }
@@ -96,7 +96,7 @@ router.put('/:id', withAuth, (req, res) => {
         .then(dbExchangeData => {
             if (!dbExchangeData) {
                 res.status(404).json({
-                    message: 'No currency found with this id'
+                    message: 'No exchange found with this id'
                 });
                 return;
             }
@@ -118,7 +118,7 @@ router.delete('/:id', withAuth, (req, res) => {
         .then(dbExchangeData => {
             if (!dbExchangeData) {
                 res.status(404).json({
-                    message: 'No currency found with this id'
+                    message: 'No exchange found with this id'
                 });
                 return;
             }

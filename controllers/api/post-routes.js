@@ -3,7 +3,8 @@ const sequelize = require('../../config/connection');
 const {
     Post,
     User,
-    Currency
+    Currency,
+    Exchange
 } = require('../../models');
 const withAuth = require('../../utils/auth');
 
