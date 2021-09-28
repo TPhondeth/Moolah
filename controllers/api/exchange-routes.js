@@ -1,8 +1,6 @@
 const router = require('express').Router();
 const {
-    Exchange,
-    Currency,
-    User,
+    Exchange
 } = require('../../models');
 const withAuth = require('../../utils/auth');
 
@@ -14,15 +12,6 @@ router.get('/', (req, res) => {
                 'exchange',
                 'impact_score',
                 'rating',
-            ],
-            include: [{
-                    model: Currency,
-                    attributes: ['id', 'currency', 'currency_name', 'price'],
-                    include: {
-                        model: User,
-                        attributes: ['username']
-                    }
-                }
             ]
         })
         .then(dbExchangeData => res.json(dbExchangeData))
@@ -43,15 +32,6 @@ router.get('/:id', (req, res) => {
                 'exchange',
                 'impact_score',
                 'rating',
-            ],
-            include: [{
-                    model: Currency,
-                    attributes: ['id', 'currency', 'currency_name', 'price'],
-                    include: {
-                        model: User,
-                        attributes: ['username']
-                    }
-                }
             ]
         })
         .then(dbExchangeData => {
