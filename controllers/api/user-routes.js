@@ -8,7 +8,13 @@ router.get('/', (req, res) => {
     User.findAll({
             attributes: {
                 exclude: ['password']
-            }
+            },
+            include: [
+                {
+                    model: Currency,
+                    attributes: ['id', 'currency', 'currency_name', 'price']
+                }
+            ]
         })
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {

@@ -5,7 +5,21 @@ const { Post, User, Currency, Exchange } = require("../models");
 
 // Home page
 router.get("/", (req, res) => {
-  Post.findAll({})
+  Post.findAll({
+    attributes: ["id", "post_text", "title", "created_at"],
+    include: [
+      {
+        model: User,
+        attributes: ["username", "email"],
+        include: [
+          {
+            model: Currency,
+            attributes: ["id", "currency", "currency_name", "price"],
+          },
+        ],
+      },
+    ],
+  })
     .then((dbPostData) => {
       const posts = dbPostData.map((post) =>
         post.get({
@@ -13,7 +27,7 @@ router.get("/", (req, res) => {
         })
       );
 
-      res.render("homepage", {});
+      res.render("homepage", posts);
     })
     .catch((err) => {
       console.log(err);
