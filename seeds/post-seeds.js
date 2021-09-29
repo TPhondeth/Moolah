@@ -4,28 +4,28 @@ const {
 
 const postData = [
     {
-        title: " ",
-        post_text: " ",
+        title: " Hot Crpyto Right Now ",
+        post_text: " adsfkasfasfsadfsd ",
         user_id: 1,
     },
     {
-        title: " ",
-        post_text: " ",
+        title: " What To Buy ",
+        post_text: " safsdfsdfsdfsd ",
         user_id: 2,
     },
     {
-        title: " ",
-        post_text: " ",
+        title: " Crypto News ",
+        post_text: " sfsdfsdffdfsdf ",
         user_id: 3,
     },
     {
-        title: " ",
-        post_text: " ",
+        title: " Ethereum sucks ",
+        post_text: " dsfsadfsdfdsfdsf ",
         user_id: 4,
     },
     {
-        title: " ",
-        post_text: " ",
+        title: " NFT ",
+        post_text: " sdffsdfsdsf ",
         user_id: 5,
     }
 ];
