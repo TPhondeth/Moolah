@@ -1,4 +1,5 @@
 // Dependencies
+const path = require('path');
 const express = require('express');
 const exphbs = require('express-handlebars');
 // Import sequelize connection
@@ -17,9 +18,11 @@ app.use(express.urlencoded({
     extended: false
 }));
 
+// Path to the public directory for js/css files
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('./controllers/'));
 
 // Sync sequelize models to the database, then turn on the server
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
 });

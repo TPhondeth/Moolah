@@ -2,28 +2,24 @@ const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const {
     Post,
-    User,
-    Currency
+    User
 } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// Get all users
+// Get all posts
 router.get('/', (req, res) => {
     Post.findAll({
             attributes: [
                 'id',
-                'post_text',
                 'title',
+                'post_text',
                 'created_at',
             ],
-            include: [{
-                    model: Currency,
-                    attributes: ['id', 'currency', 'currency_name', 'price'],
-                    include: {
+            include: [
+                {
                         model: User,
                         attributes: ['username']
                     }
-                }
             ]
         })
         .then(dbPostData => res.json(dbPostData))
@@ -33,7 +29,7 @@ router.get('/', (req, res) => {
         });
 });
 
-// Get single user
+// Get single post
 router.get('/:id', (req, res) => {
     Post.findOne({
             where: {
@@ -41,18 +37,15 @@ router.get('/:id', (req, res) => {
             },
             attributes: [
                 'id',
-                'post_text',
                 'title',
+                'post_text',
                 'created_at',
             ],
-            include: [{
-                    model: Currency,
-                    attributes: ['id', 'currency', 'currency_name', 'price',],
-                    include: {
+            include: [
+                {
                         model: User,
                         attributes: ['username']
                     }
-                }
             ]
         })
         .then(dbPostData => {
