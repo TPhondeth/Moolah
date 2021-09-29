@@ -1,3 +1,11 @@
+:root 
+{
+    --primary-color: royalblue;
+    --secondary-color: #f5db65;
+    --tertiary-color: #39a6b2;
+}
+
+
 video {
 	position: fixed;
 	top: 50%;
@@ -9,4 +17,41 @@ video {
 	z-index: -100;
 	transform: translateX(-50%) translateY(-50%);
 	background-size: cover;
-    }
+}
+body{
+	font-size: 100%;
+	font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
+	line-height: 1.4;
+	padding: 50px;
+	background-color: var(--tertiary-color);
+	margin: 0;
+}
+input{
+	border: 1px solid #024e76;
+	display :block;
+	padding: 7px 15px;
+	font-size :16px;
+	width :100%;
+	margin-bottom: 15px;
+}
+label{margin: 0px 5px;}
+
+button {
+color: var (--secondary-color);
+	border: 0;
+	padding: 1%;
+	font-weight: bold;
+	transition: background-color .1s;
+	cursor: pointer;
+	border-radius: 5px;
+      }
+      button:hover
+      {
+	  cursor: pointer;
+	  background-color: var(--secondary-color);  
+	  color: var(--tertiary-color)
+      }
+
+      form label {
+	display: block;
+      }
