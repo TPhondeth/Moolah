@@ -1,4 +1,5 @@
 // Dependencies
+const path = require('path');
 const express = require('express');
 const exphbs = require('express-handlebars');
 // Import sequelize connection
@@ -17,6 +18,7 @@ app.use(express.urlencoded({
     extended: false
 }));
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('./controllers/'));
 
 // Sync sequelize models to the database, then turn on the server
