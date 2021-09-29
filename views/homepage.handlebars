@@ -12,7 +12,9 @@
           <th>Impact Score</th>
           <th>Rating</th>
         </tr>
+        {{#each posts as |post|}}
         {{>homepage-filler post-list}}
+        {{/each}}
       </table>  
     </div>
   </div>
