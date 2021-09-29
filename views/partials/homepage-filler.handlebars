@@ -1,15 +1,9 @@
-
-
-  <tr class="post-list">
-  <td>{{currency.currency}}</td>
-  <td>{{currency.currency_name}}</td>
-  <td>{{currency.price}}</td>
-  <td>{{exchange.impact_score}}</td>
-  <td>{{exchange.rating}}</td>
-  </tr>
-
-
-
-  
-
-  
+{{#each posts as |post|}}
+<tr class="post-list">
+  <td>{{currency.currencyData.currency}}</td>
+  <td>{{currency.currencyData.currency_name}}</td>
+  <td>{{currency.currencyData.price}}</td>
+  <td>{{exchange.exchangeData.impact_score}}</td>
+  <td>{{exchange.exchangeData.rating}}</td>
+</tr>
+{{/each}}
