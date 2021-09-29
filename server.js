@@ -18,6 +18,7 @@ app.use(express.urlencoded({
     extended: false
 }));
 
+// Path to the public directory for js/css files
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('./controllers/'));
 
