@@ -1,12 +1,7 @@
 // Dependencies
-const router = require('express').Router();
-const sequelize = require('../config/connection');
-const {
-    Post,
-    User,
-    Currency,
-    Exchange
-} = require('../models');
+const router = require("express").Router();
+const sequelize = require("../config/connection");
+const { Post, User, Currency, Exchange } = require("../models");
 
 // Home page
 router.get('/', (req, res) => {
@@ -35,8 +30,8 @@ router.get('/login', (req, res) => {
         return;
     }
 
-    res.render('login');
-});
+//   res.render("login");
+// });
 
 // Sign up page
 router.get('/signup', (req, res) => {
