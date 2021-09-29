@@ -21,7 +21,11 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Sets Handlebars as the default template engine
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+const hbs = exphbs.create({
+    helpers
+});
+
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
