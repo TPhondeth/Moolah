@@ -3,6 +3,8 @@ const { response } = require('express');
 // fetch from lunar crush api the latest price of currency using its symbol
 async function get_asset(symbol) {
     
+    const fetch = await import('node-fetch');
+
     const apiUrl = "https://api.lunarcrush.com/v2?data=assets&key="+ process.env.API_KEY +"&symbol=" + symbol;
 
     const response = await fetch(apiUrl);

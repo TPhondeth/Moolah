@@ -7,6 +7,30 @@ const get_asset = require('../../public/javascript/currency');
 
 // Get all currencies
 router.get('/', (req, res) => {
+    
+    console.log(get_asset('BTC'));
+    // for(i=1; i<=10; i++){
+    //     Currency.update(
+    //         {
+    //             price: get_asset(req.body.currency)
+    //         }, 
+    //         {
+    //         where: {
+    //             id: i
+    //         }
+    //     }).then(dbPostData => {
+    //         if (!dbPostData) {
+    //           res.status(404).json({ message: 'No post found with this id' });
+    //           return;
+    //         }
+    //         res.json(dbPostData);
+    //       })
+    //       .catch(err => {
+    //         console.log(err);
+    //         res.status(500).json(err);
+    //       });
+    // }
+    
     Currency.findAll({
             attributes: [
                 'id',
@@ -15,7 +39,10 @@ router.get('/', (req, res) => {
                 'price'
             ]
         })
-        .then(dbCurrencyData => res.json(dbCurrencyData))
+        .then(dbCurrencyData => {
+            
+            res.json(dbCurrencyData);
+        })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
