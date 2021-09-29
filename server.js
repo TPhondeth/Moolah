@@ -4,6 +4,17 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 // Import sequelize connection
 const sequelize = require('./config/connection');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+const sess = {
+    secret: 'Super secret secret',
+    cookie: {},
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+        db: sequelize
+    })
+};
 
 // Sets up the Express App
 const app = express();
@@ -17,6 +28,8 @@ app.use(express.json());
 app.use(express.urlencoded({
     extended: false
 }));
+
+app.use(session(sess));
 
 // Path to the public directory for js/css files
 app.use(express.static(path.join(__dirname, 'public')));
