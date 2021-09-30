@@ -6,6 +6,6 @@ const homepageRoutes = require('./homepage-routes');
 
 router.use('/', homepageRoutes);
 router.use('/api', apiRoutes);
-// router.use('/wallet', walletRoutes);
+
 
 module.exports = router;
