@@ -12,8 +12,15 @@
           <th>Impact Score</th>
           <th>Rating</th>
         </tr>
-        {{!-- {{>homepage-filler post-list}} --}}
-        <tr>
+        {{>homepage-filler posts=posts}}
+        {{!-- <tr>
+        {{#each posts as |post|}}
+        <td>
+          {{post.post_text}}
+        </td>
+        {{/each}}
+        </tr> --}}
+        {{!-- <tr>
           <td>Bitcoin (BTC)</td>
           <td>$43016.58</td>
           <td> -- </td>
@@ -52,7 +59,7 @@
           <td> -- </td>
           <td> 3 </td>
           <td> 5 </td>
-        </tr>
+        </tr> --}}
       </table>  
     </div>
   </div>

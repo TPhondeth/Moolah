@@ -26,8 +26,12 @@ router.get("/", (req, res) => {
           plain: true,
         })
       );
-
-      res.render("homepage", posts);
+      // console.log(posts);
+      // console.log(posts[0].user.currencies);
+      const hbsObj = {
+        posts: posts,
+      };
+      res.render("homepage", hbsObj);
     })
     .catch((err) => {
       console.log(err);
