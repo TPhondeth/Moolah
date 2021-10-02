@@ -1,22 +1,34 @@
 require('dotenv').config();
+const axios = require('axios');
 
 // fetch from lunar crush api the latest price of currency using its symbol
-async function get_asset(symbol) {
-    
-    const fetch = await import('node-fetch');
+async function getPrice(currency) {
 
-    const apiUrl = "https://api.lunarcrush.com/v2?data=assets&key="+ process.env.API_KEY +"&symbol=" + symbol;
-
-    const response = await fetch(apiUrl);
+    try {
+        const apiUrl = "https://api.lunarcrush.com/v2?data=assets&key="+ process.env.API_KEY +"&symbol=" + currency.currency;
+        
+        const response = await axios.get(apiUrl);
+        const results = await response.data;
+        const currencyObject = await {
+            currency: results.data[0].symbol,
+            currency_name: results.data[0].name,
+            price: results.data[0].price
+        }
+        console.log(currencyObject);
+        return await currencyObject;
+    }
     
-    if (response.ok) {
-        response.json().then(function(asset) {
-            console.log(data);
-            return asset.data.price;
-        });
-    } else {
-        alert('Error: LunarCRUSH asset Not Found');
+    catch (err) {
+        if (err.response) {
+          // client received an error response (5xx, 4xx)
+          console.log("Server Error:", err)
+        } else if (err.request) {
+          // client never received a response, or request never left
+          console.log("Network Error:", err)
+        } else {
+          console.log("Client Error:", err)
+        }
     }
 }
 
-module.exports = get_asset;
+module.exports = getPrice;

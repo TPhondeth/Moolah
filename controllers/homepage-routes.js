@@ -7,6 +7,7 @@ const {
     Currency,
     Exchange
 } = require("../models");
+const getPrice = require('../public/javascript/currency')
 
 // Home page
 router.get('/', (req, res) => {
@@ -30,9 +31,9 @@ router.get('/', (req, res) => {
         const posts = dbPostData.map(post => post.get({
             plain: true
         }));
-        console.log(posts);
+        const updatedPosts = getPrice(posts);
         res.render('homepage',
-            posts);
+            updatedPosts);
     })
     .catch(err => {
         console.log(err);
