@@ -1,4 +1,4 @@
-const { response } = require('express');
+require('dotenv').config();
 
 // fetch from lunar crush api the latest price of currency using its symbol
 async function get_asset(symbol) {
