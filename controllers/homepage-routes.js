@@ -32,7 +32,7 @@ router.get('/', (req, res) => {
             }));
 
             res.render('homepage',
-                posts);
+                {posts});
         })
         .catch(err => {
             console.log(err);

@@ -196,7 +196,8 @@ h2 {
 }
 
 .login,
-.signup {
+.signup,
+.add {
   margin: 25px 0 25px 0;
 }
 
@@ -204,6 +205,8 @@ h2 {
 .username {
   margin-top: 15px;
 }
+
+.btn-no-style :hover
 
 #button-capsule {
   text-align: center;
