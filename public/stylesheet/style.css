@@ -181,6 +181,10 @@ form label {
   text-decoration: none;
 }
 
+.crypto a :hover {
+  color: #18e4ad;
+}
+
 i {
   font-size: 50px;
   color: #f20089;
