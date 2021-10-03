@@ -15,7 +15,7 @@ async function loginFormHandler(event) {
     });
     //check the response status
     if (response.ok) {
-      document.location.replace("/");
+      document.location.replace("/portfolio");
     } else {
       alert(response.statusText);
     }
