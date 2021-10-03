@@ -10,24 +10,21 @@
             <label for="currency-name" style="color:#f5db65">Currency Name</label>
             <input id="currency_name" name="currency_name" />
         </div>
+        <div>
+            <label for="curr_ownd" style="color:#f5db65">How Many Currency Do You Own?</label>
+            <input id="curr_ownd" name="curr_ownd" />
+        </div>
         <div class="add">
             <button type="submit" class="btn">Add</button>
         </div>
     </form>
 </section>
 
-{{#if currencies.length}}
-<section>
-    <h2>Your Currencies</h2>
-    <ol>
-        {{#each currency posts }}
-        <li>
-            {{> currency-info post}}
-            <a href="/portfolio/edit/{{currency.id}}" class="edit-link">Edit Currency</a>
-        </li>
-        {{/each}}
-    </ol>
-</section>
-{{/if}}
 
-<script src="/javascript/add-post.js"></script>
+<section>
+    <a href="/holding"><h4>Go To Your Holdings</h4></a>
+    
+</section>
+
+
+<script src="/javascript/add-currency.js"></script>

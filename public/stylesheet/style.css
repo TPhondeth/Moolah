@@ -81,7 +81,7 @@ button {
 button:hover {
   cursor: pointer;
   background-color: var(--secondary-color);
-  color: var(--tertiary-color)
+  color: var(--tertiary-color);
 }
 
 button:active {
@@ -107,7 +107,7 @@ video {
 
 body {
   font-size: 100%;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   line-height: 1.4;
   padding: 50px;
   background-color: var(--tertiary-color);
@@ -132,7 +132,7 @@ button {
   border: 0;
   padding: 1%;
   font-weight: bold;
-  transition: background-color .1s;
+  transition: background-color 0.1s;
   cursor: pointer;
   border-radius: 5px;
 }
@@ -140,7 +140,7 @@ button {
 button:hover {
   cursor: pointer;
   background-color: var(--secondary-color);
-  color: var(--tertiary-color)
+  color: var(--tertiary-color);
 }
 
 form label {
@@ -161,7 +161,7 @@ form label {
 }
 
 .container h2 {
-  color: var(--secondary-color)
+  color: var(--secondary-color);
 }
 
 .container tr {
@@ -195,6 +195,11 @@ h2 {
   color: var(--secondary-color);
 }
 
+h4 {
+  font-size: 25px;
+  color: var(--secondary-color);
+}
+
 .login,
 .signup,
 .add {
@@ -206,9 +211,7 @@ h2 {
   margin-top: 15px;
 }
 
-.btn-no-style :hover
-
-#button-capsule {
+.btn-no-style :hover #button-capsule {
   text-align: center;
   margin-top: 5px;
 }
@@ -232,5 +235,3 @@ footer i {
   text-decoration: none;
   margin: 0;
 }
-
-
