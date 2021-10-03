@@ -3,7 +3,7 @@ const {
     Currency
 } = require('../../models');
 const withAuth = require('../../utils/auth');
-const getPrice = require('../../public/javascript/currency')
+const getPrice = require('../../public/javascript/currency');
 
 // Get all currencies
 router.get('/', (req, res) => {
@@ -23,13 +23,16 @@ router.get('/', (req, res) => {
             const currencies = dbCurrencyData.map(currency => currency.get({
                 plain: true
             }));
-            const updatedCurrencies = [];
-            for(let i = 0; i < currencies.length; i++){
-                // updatedCurrencies.push(getPrice(currencies[i]));
-                const updatedPrice = getPrice(currencies[i]);
-                console.log(updatedPrice);
-            }
-            res.json(updatedCurrencies);
+            
+            getPrice(currencies)
+                .then(updatedCurrencies => {
+                    console.log(updatedCurrencies);
+                    res.json(updatedCurrencies);
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(500).json(err);
+                });
         })
         .catch(err => {
             console.log(err);
@@ -51,13 +54,22 @@ router.get('/:id', (req, res) => {
             ]
         })
         .then(dbCurrencyData => {
+            
             if (!dbCurrencyData) {
                 res.status(404).json({
                     message: 'No currency found with this id'
                 });
                 return;
             }
-            res.json(dbCurrencyData);
+            const currency = dbCurrencyData.get({plain: true});
+            getPrice(currency)
+                .then(updatedCurrency => {
+                    res.json(updatedCurrency);
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(500).json(err);
+                });
         })
         .catch(err => {
             console.log(err);
