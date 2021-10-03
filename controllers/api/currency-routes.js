@@ -62,8 +62,14 @@ router.get('/:id', (req, res) => {
                 return;
             }
             const currency = dbCurrencyData.get({plain: true});
-            console.log(currency);
-            res.json(dbCurrencyData);
+            getPrice(currency)
+                .then(updatedCurrency => {
+                    res.json(updatedCurrency);
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(500).json(err);
+                });
         })
         .catch(err => {
             console.log(err);
