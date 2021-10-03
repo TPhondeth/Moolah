@@ -1,0 +1,33 @@
+<section>
+    <h2>Add Currency</h2>
+
+    <form class="new-currency-form">
+        <div>
+            <label for="currency" style="color:#f5db65;line-height: 2;padding-right: 42px;">Currency</label>
+            <input type="text" id="currency" name="currency" />
+        </div>
+        <div>
+            <label for="currency-name" style="color:#f5db65">Currency Name</label>
+            <input id="currency_name" name="currency_name" />
+        </div>
+        <div class="add">
+            <button type="submit" class="btn">Add</button>
+        </div>
+    </form>
+</section>
+
+{{#if currencies.length}}
+<section>
+    <h2>Your Currencies</h2>
+    <ol>
+        {{#each currency posts }}
+        <li>
+            {{> currency-info post}}
+            <a href="/portfolio/edit/{{currency.id}}" class="edit-link">Edit Currency</a>
+        </li>
+        {{/each}}
+    </ol>
+</section>
+{{/if}}
+
+<script src="/javascript/add-post.js"></script>
