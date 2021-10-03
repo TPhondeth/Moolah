@@ -3,18 +3,34 @@ const {
     Currency
 } = require('../../models');
 const withAuth = require('../../utils/auth');
+const getPrice = require('../../public/javascript/currency')
 
 // Get all currencies
 router.get('/', (req, res) => {
+    
     Currency.findAll({
             attributes: [
                 'id',
                 'currency',
                 'currency_name',
-                'price',
+                'price'
             ]
         })
-        .then(dbCurrencyData => res.json(dbCurrencyData))
+        .then(dbCurrencyData => {
+            
+            // res.json(dbCurrencyData);
+
+            const currencies = dbCurrencyData.map(currency => currency.get({
+                plain: true
+            }));
+            const updatedCurrencies = [];
+            for(let i = 0; i < currencies.length; i++){
+                // updatedCurrencies.push(getPrice(currencies[i]));
+                const updatedPrice = getPrice(currencies[i]);
+                console.log(updatedPrice);
+            }
+            res.json(updatedCurrencies);
+        })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);

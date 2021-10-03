@@ -7,41 +7,46 @@ const {
     Currency,
     Exchange
 } = require("../models");
+const getPrice = require('../public/javascript/currency')
 
 // Home page
 router.get('/', (req, res) => {
     Post.findAll({
-            attributes: [
-                'id',
-                'post_text',
-                'title',
-                'created_at',
-            ],
-            include: [{
-                model: User,
-                attributes: ['username', 'email'],
-                include: [{
-                    model: Currency,
-                    attributes: ['id', 'currency', 'currency_name', 'price']
-                }]
-            }]
-        })
-        .then(dbPostData => {
-            const posts = dbPostData.map(post => post.get({
-                plain: true
-            }));
-
-            res.render('homepage',
-                {posts});
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
-})
+        attributes: [
+            'id',
+            'post_text',
+            'title',
+            'created_at',
+        ],
+        include: [{
+            model: User,
+            attributes: ['username', 'email'],
+            include: {
+                model: Currency,
+                attributes: ['id', 'currency', 'currency_name', 'price']
+            }
+        }]
+    })
+    .then(dbPostData => {
+        const posts = dbPostData.map(post => post.get({
+            plain: true
+        }));
+        const updatedPosts = getPrice(posts);
+        res.render('homepage',
+            updatedPosts);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
 
 // Login page
 router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
 
     res.render("login");
 });
