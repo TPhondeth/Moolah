@@ -3,7 +3,7 @@ const {
     Currency
 } = require('../../models');
 const withAuth = require('../../utils/auth');
-const getPrice = require('../../public/javascript/currency')
+const getPrice = require('../../public/javascript/currency');
 
 // Get all currencies
 router.get('/', (req, res) => {

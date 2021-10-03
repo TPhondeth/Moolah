@@ -3,6 +3,8 @@ const {
     User, Currency
 } = require('../../models');
 
+const getPrice = require('../../public/javascript/currency');
+
 // Get all users
 router.get('/', (req, res) => {
     User.findAll({
@@ -45,7 +47,18 @@ router.get('/:id', (req, res) => {
                 });
                 return;
             }
-            res.json(dbUserData);
+            const user = dbUserData.get({plain: true});
+            getPrice(user.currencies)
+                .then(updatedCurrencies => {
+                    user.currencies = updatedCurrencies;
+                    console.log(user);
+                    res.json(user);
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(500).json(err);
+                });
+            
         })
         .catch(err => {
             console.log(err);
