@@ -1,24 +1,236 @@
-.signup-form {
-  margin: 10px;
-  text-align: center;
-  background-color: rgb(61, 61, 255);
-  border-radius: 2rem;
-  border: 3px rgb(206, 206, 206);
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #023047;
+  --secondary-color: #ffb703;
+  --tertiary-color: #f72585;
+}
+
+header {
+  z-index: 9999;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: var(--primary-color);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-position: 80%;
+  padding: 20px 35px;
+  border-bottom: solid 3px #18e4ad;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+header h1 {
+  font-weight: bold;
+  font-size: 36px;
+  align-self: center;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+header h1 :hover,
+header li :hover,
+footer p :hover {
+  color: #18e4ad;
+}
+
+header a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  justify-content: flex-start;
+}
+
+header nav {
+  margin: 7px 0;
+}
+
+header nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+}
+
+header nav ul li a {
+  padding: 10px 15px;
+  font-weight: lighter;
+  font-size: 1.55vw;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+header nav ul li a:hover {
+  border-radius: 15px;
+  text-shadow: none;
+}
+
+button {
+  color: var(--secondary-color);
+  border-radius: 10px;
+  background-color: var(--tertiary-color);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: var(--secondary-color);
+  color: var(--tertiary-color)
+}
+
+button:active {
+  cursor: pointer;
+  background-color: var(--secondary-color);
+  color: var(--tertiary-color);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  transform: translateX(-50%) translateY(-50%);
+  background-size: cover;
+}
+
+body {
+  font-size: 100%;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.4;
+  padding: 50px;
+  background-color: var(--tertiary-color);
+  margin: 0;
+}
+
+input {
+  border: 1px solid #8ecae6;
+  display: block;
+  padding: 7px 15px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+label {
+  margin: 0px 5px;
+}
+
+button {
+  color: var (--secondary-color);
+  border: 0;
+  padding: 1%;
+  font-weight: bold;
+  transition: background-color .1s;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: var(--secondary-color);
+  color: var(--tertiary-color)
+}
+
+form label {
+  display: block;
+}
+
+.container {
   margin: auto;
-  width: 50%;
-  padding: 10px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  width: 75%;
+  height: 450px;
+  background-color: var(--tertiary-color);
+  border-radius: 3px;
+
+  border: solid 5px var(--secondary-color);
 }
-.login-form {
-  margin: 10px;
+
+.container h2 {
+  color: var(--secondary-color)
+}
+
+.container tr {
+  color: var(--secondary-color);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.crypto {
+  list-style: none;
+  line-height: 70px;
+}
+
+.crypto a {
+  font-size: 30px;
+  font-weight: lighter;
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+.crypto a :hover {
+  color: #18e4ad;
+}
+
+i {
+  font-size: 50px;
+  color: #f20089;
+}
+
+h2 {
+  font-size: 35px;
+  color: var(--secondary-color);
+}
+
+.login,
+.signup,
+.add {
+  margin: 25px 0 25px 0;
+}
+
+.email,
+.username {
+  margin-top: 15px;
+}
+
+.btn-no-style :hover
+
+#button-capsule {
   text-align: center;
-  background-color: rgb(61, 61, 255);
-  border-radius: 2rem;
-  box-shadow: rgb(206, 206, 206);
-  margin: auto;
-  width: 50%;
-  padding: 10px;
+  margin-top: 5px;
 }
-.button {
-  border-radius: 3rem;
-  background-color: white;
+
+footer {
+  background-color: var(--primary-color);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 10px 35px;
+  border-bottom: solid 3px #18e4ad;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
 }
+
+footer a,
+footer i {
+  color: var(--secondary-color);
+  font-size: 15px;
+  text-decoration: none;
+  margin: 0;
+}
+
+
