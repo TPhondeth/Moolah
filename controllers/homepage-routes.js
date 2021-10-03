@@ -5,7 +5,6 @@ const {
     Post,
     User,
     Currency,
-    Exchange
 } = require("../models");
 const getPrice = require('../public/javascript/currency')
 
@@ -44,7 +43,6 @@ router.get('/', (req, res) => {
 // Login page
 router.get('/login', (req, res) => {
     
-
     res.render("login");
 });
 

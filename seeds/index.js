@@ -1,9 +1,6 @@
 const seedUsers = require("./user-seeds");
 const seedCurrencies = require("./currency-seeds");
-const seedExchanges = require("./exchange-seeds");
-// const seedPosts = require("./post-seeds");
 const seedUserCurrencies = require("./user-currency-seeds");
-
 const sequelize = require("../config/connection");
 
 const seedAll = async () => {
@@ -17,12 +14,6 @@ const seedAll = async () => {
 
   await seedCurrencies();
   console.log("\n----- CURRENCIES SEEDED -----\n");
-
-  // await seedPosts();
-  // console.log("\n----- POSTS SEEDED -----\n");
-
-  await seedExchanges();
-  console.log("\n----- EXCHANGES SEEDED -----\n");
 
   await seedUserCurrencies();
   console.log("\n----- USERCURRENCIES SEEDED -----\n");
