@@ -4,7 +4,8 @@ const {
 } = require("../models");
 const seedUsers = require("./user-seeds");
 
-const userCurrencyData = [{
+const userCurrencyData = [
+    {
         user_id: 1,
         currency_id: 5,
     },

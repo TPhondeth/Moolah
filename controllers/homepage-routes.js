@@ -5,7 +5,6 @@ const {
     Post,
     User,
     Currency,
-    Exchange
 } = require("../models");
 const getPrice = require('../public/javascript/currency')
 
