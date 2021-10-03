@@ -37,6 +37,5 @@ module.exports = {
     User,
     Post,
     Currency,
-    Exchange,
     UserCurrency
 };
