@@ -17,7 +17,7 @@ async function loginFormHandler(event) {
     if (response.ok) {
       document.location.replace("/portfolio");
     } else {
-      alert(response.statusText);
+      alert("Invalid Password Please Try Again");
     }
   }
 }
