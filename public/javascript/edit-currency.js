@@ -2,7 +2,7 @@ async function editFormHandler(event) {
     event.preventDefault();
 
     const currency = document.querySelector('input[name="currency"]').value.trim();
-    const post_text = document.querySelector('input[name="currency_name"]').value.trim();
+    const currency_name = document.querySelector('input[name="currency_name"]').value.trim();
     const id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];

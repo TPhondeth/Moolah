@@ -11,7 +11,7 @@ const {
 const withAuth = require('../utils/auth');
 
 // Get all currencies for dashboard
-router.get('/portfolio', withAuth, (req, res) => {
+router.get('/', withAuth, (req, res) => {
     Currency.findAll({
             where: {
                 id: req.session.id

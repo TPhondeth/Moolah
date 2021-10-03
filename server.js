@@ -3,6 +3,7 @@ const path = require('path');
 const express = require('express');
 const exphbs = require('express-handlebars');
 const session = require('express-session');
+const routes = require('./controllers');
 // Import sequelize connection
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -39,7 +40,7 @@ app.use(session(sess));
 
 // Path to the public directory for js/css files
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(require('./controllers/'));
+app.use(routes);
 
 // Sync sequelize models to the database, then turn on the server
 sequelize.sync({ force: false }).then(() => {
