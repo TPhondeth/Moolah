@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
             include: [
                 {
                     model: Currency,
-                    attributes: ['id', 'currency', 'currency_name', 'price']
+                    attribute: ['id', 'currency', 'currency_name', 'price']
                 }
             ]
         })
@@ -34,7 +34,7 @@ router.get('/:id', (req, res) => {
             },
             include: [{
                     model: Currency,
-                    attributes: ['id', 'currency', 'currency_name', 'price']
+                    attribute: ['id', 'currency', 'currency_name', 'price']
                 }
             ]
         })

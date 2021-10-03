@@ -1,69 +1,23 @@
-<!-- Dash Board-->
-<div class="container" id="dashboard">
-  <div class="row" id="dashboard">
-    <div class="col-12">
-      <h2 style="text-align: center;">Exchange Rate</h2>
-      <table style="width: 100%;" id="dashboard">
-        <tr>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Quantity Held</th>
-          <th>Holding Value</th>
-          <th>Impact Score</th>
-          <th>Rating</th>
-        </tr>
-        {{>homepage-filler posts=posts}}
-        {{!-- <tr>
-        {{#each posts as |post|}}
-        <td>
-          {{post.post_text}}
-        </td>
-        {{/each}}
-        </tr> --}}
-        {{!-- <tr>
-          <td>Bitcoin (BTC)</td>
-          <td>$43016.58</td>
-          <td> -- </td>
-          <td> -- </td>
-          <td> 10 </td>
-          <td> 1 </td>
-        </tr>
-        <tr>
-          <td>Ethereum (ETH)</td>
-          <td>$2963.74</td>
-          <td> -- </td>
-          <td> -- </td>
-          <td> 8.93 </td>
-          <td> 2 </td>
-        </tr>
-        <tr>
-          <td>Cardano (ADA)</td>
-          <td>$2.05</td>
-          <td> -- </td>
-          <td> -- </td>
-          <td> 7.6 </td>
-          <td> 3 </td>
-        </tr>
-        <tr>
-          <td>Ripple (XRP)</td>
-          <td>$ 0.92</td>
-          <td> -- </td>
-          <td> -- </td>
-          <td> 6.5 </td>
-          <td> 4 </td>
-        </tr>
-        <tr>
-          <td>Solana (SOL)</td>
-          <td>$134.72</td>
-          <td> -- </td>
-          <td> -- </td>
-          <td> 3 </td>
-          <td> 5 </td>
-        </tr> --}}
-      </table>  
-    </div>
-  </div>
-</div>
-
-
-<button type="submit" class="button">Go To Wallet</button>
+<h2 style="text-align: center">Cryptocurrency News</h2>
+<nav>
+  <ul class="crypto">
+    <li>
+      <a href="https://www.nomics.com" target="_blank" rel="noopener"><i class="fas fa-coins"></i> Nomics</a>
+    </li>
+    <li>
+      <a href="https://www.coindesk.com/" target="_blank" rel="noopener"><i class="fab fa-btc"></i> CoinDesk</a>
+    </li>
+    <li>
+      <a href="https://cryptonews.com/" target="_blank" rel="noopener"><i class="fab fa-ethereum"></i>
+        Crypto News</a>
+    </li>
+    <li>
+      <a href="https://news.bitcoin.com/" target="_blank" rel="noopener"><i class="fab fa-bitcoin"></i>
+        Bitcoin.com</a>
+    </li>
+    <li>
+      <a href="https://cointelegraph.com/" target="_blank" rel="noopener"><i class="fas fa-comment-dollar"></i>
+        Cointelegraph</a>
+    </li>
+  </ul>
+</nav>
