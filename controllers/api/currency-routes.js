@@ -11,9 +11,7 @@ router.get('/', (req, res) => {
     Currency.findAll({
             attributes: [
                 'id',
-                'currency',
-                'currency_name',
-                'price'
+                'currency'
             ]
         })
         .then(dbCurrencyData => {
@@ -48,9 +46,7 @@ router.get('/:id', (req, res) => {
             },
             attributes: [
                 'id',
-                'currency',
-                'currency_name',
-                'price',
+                'currency'
             ]
         })
         .then(dbCurrencyData => {
@@ -82,7 +78,6 @@ router.post('/', withAuth, (req, res) => {
     // expects {currency: 'BTC', currency_name: 'BITCOIN', price: 43016.58}
     Currency.create({
             currency: req.body.currency,
-            currency_name: req.body.currency_name,
             price: req.session.price
         })
         .then(dbCurrencyData => res.json(dbCurrencyData))

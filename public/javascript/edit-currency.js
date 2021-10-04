@@ -11,7 +11,7 @@ async function editFormHandler(event) {
         body: JSON.stringify({
             currency,
             currency_name,
-            price
+            curr_ownd
         }),
         headers: {
             'Content-Type': 'application/json'
