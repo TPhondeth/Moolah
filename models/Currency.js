@@ -14,7 +14,7 @@ Currency.init({
     primaryKey: true,
     autoIncrement: true,
   },
-  currency: {
+  symbol: {
     type: DataTypes.STRING,
     allowNull: false,
   }

@@ -10,13 +10,7 @@ router.get('/', (req, res) => {
     User.findAll({
             attributes: {
                 exclude: ['password']
-            },
-            include: [
-                {
-                    model: Currency,
-                    attribute: ['id', 'currency', 'currency_name', 'price']
-                }
-            ]
+            }
         })
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {
@@ -36,7 +30,7 @@ router.get('/:id', (req, res) => {
             },
             include: [{
                     model: Currency,
-                    attribute: ['id', 'currency', 'currency_name', 'price']
+                    attribute: ['symbol']
                 }
             ]
         })
@@ -50,8 +44,10 @@ router.get('/:id', (req, res) => {
             const user = dbUserData.get({plain: true});
             getPrice(user.currencies)
                 .then(updatedCurrencies => {
+                    if (updatedCurrencies.length > 1){
+                        updatedCurrencies.sort((a, b) => b.market_cap - a.market_cap);
+                    }
                     user.currencies = updatedCurrencies;
-                    console.log(user);
                     res.json(user);
                 })
                 .catch(err => {

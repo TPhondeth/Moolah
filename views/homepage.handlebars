@@ -2,7 +2,7 @@
 <div id='table-holder'>
 
   <div class='container'>
-    <h1>Cryptocurrency News</h1>
+    <h1 class="tableNews">Cryptocurrency News</h1>
     <ul class='list-chart'>
       <li>
         <a href='https://bitcoin.org/en/' target='_blank'>Bitcoin.org</a>
@@ -29,8 +29,7 @@
   </div>
 
   <div class='container'>
-    <h1>
-      Top-5 Crypto Exchanges</h1>
+    <h1 class="tableExchanges">Top-5 Crypto Exchanges</h1>
     <ul class='list-chart'>
       <li>
         <a href='https://www.binance.com/en' target='_blank'>Binance</a>
@@ -53,6 +52,37 @@
         <img src='./assets/logo/KUCoin.png'>
       </li>
     </ul>
+  </div>
 
+  <div class='container'>
+    <h1 class="tableCap">Cryptocurrencies by Market Cap</h1>
+    <div class="list-chart">
+      <section>
+          <h2 style="text-align: center; padding-top: 20px; padding-bottom: 20px">Add Currency</h2>
+
+          <form class="new-currency-form" style="text-align: center">
+              <label for="currency_symbol" style="color:#f5db65; font-size: 14px">Currency Abbreviation Symbol</label>
+              <input type="text" id="currency_symbol" name="currency_symbol" />
+              <button type="submit">Add</button>
+          </form>
+      </section>
+
+      <table>
+        <tr>
+          <th class="name">NAME</th>
+          <th class="price">PRICE</th>
+          <th class="day_change">1D CHANGE</th>
+          <th class="market_cap">MARKET CAP</th>
+        </tr>
+        {{#each updatedCurrencies as |currency|}}
+        <tr>
+          {{> currency-info currency}}
+        </tr>
+        {{/each}}
+      </table>
+      </div>
   </div>
 </div>
+
+
+<script src="/javascript/add-currency.js"></script>
