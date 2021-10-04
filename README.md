@@ -59,11 +59,13 @@ Moolah is envisioned as a focal point for all the information related to cryptoc
 
 ## Credits
 
-**Tony Phondeth**
-**Sallam Thabet**
-**Mikhael Hamoy**
-**Mehtab Locham**
-**Japjeet Kaur**
+### Collaborators
+
+1. **Tony Phondeth**
+2. **Sallam Thabet**
+3. **Mikhael Hamoy**
+4. **Mehtab Locham**
+5. **Japjeet Kaur**
 
 ## License
 
