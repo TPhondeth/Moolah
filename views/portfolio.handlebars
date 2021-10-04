@@ -1,9 +1,10 @@
 
 <section class='container'>
-    <div class="list-chart">
+    <div class="list-chart" style="margin-top: 100px;">
+        <h2 class="portfolioTitle">Cryptocurrency Portfolio</h2>
         <div class="new-user-currency">
             <input type="hidden" id="user_id" name="user_id" value="{{user.id}}">
-            <label for="selectCurrencies">Choose a Cryptocurrency:</label>
+            <label for="selectCurrencies" style="color:#f5db65; font-size: 15px; font-weight: bold">Choose a Cryptocurrency:</label>
 
             <select name="selectCurrencies" id="selectCurrencies">
                 {{#each currencies as |currency|}}
@@ -11,9 +12,9 @@
                 {{/each}}
             </select>
 
-            <button type="submit" class="btn">Add</button>
+            <button type="submit">Add</button>
         <table>
-            <tr>
+            <tr class="portfolio">
             <th class="name">NAME</th>
             <th class="price">PRICE</th>
             <th class="day_change">1D CHANGE</th>
