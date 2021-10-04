@@ -44,7 +44,12 @@ Moolah is envisioned as a focal point for all the information related to cryptoc
         * Sequelize
     
 ## Usage
-
+**Homepage**
+<img width="1434" alt="Screen Shot 2021-10-03 at 5 42 43 PM" src="https://user-images.githubusercontent.com/48960710/135780556-267e54ae-a17e-4579-8e7d-19678371708b.png">
+**Sign Up**
+<img width="1438" alt="Screen Shot 2021-10-03 at 5 50 50 PM" src="https://user-images.githubusercontent.com/48960710/135780612-9c902996-8c01-4b5b-b913-0fe9cb37c2fa.png">
+**Add a crytpocurrency to your personal account**
+<img width="1438" alt="Screen Shot 2021-10-03 at 5 50 50 PM" src="https://user-images.githubusercontent.com/48960710/135780676-d15e5124-6af7-4960-be4f-b4566f95a120.png">
 
 ## Credits
 
