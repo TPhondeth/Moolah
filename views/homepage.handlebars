@@ -53,6 +53,37 @@
         <img src='./assets/logo/KUCoin.png'>
       </li>
     </ul>
+  </div>
 
+  <div class='container'>
+    <h1>Cryptocurrencies Sort by Market Cap</h1>
+    <div class="list-chart">
+      <section>
+          <h2 style="padding-top: 25px; padding-bottom: 25px">Add Currency</h2>
+
+          <form class="new-currency-form">
+              <label for="currency_symbol" style="color:#f5db65; padding-right: 30px">Currency Abbreviation Symbol</label>
+              <input type="text" id="currency_symbol" name="currency_symbol" />
+              <button type="submit" class="btn">Add</button>
+          </form>
+      </section>
+
+      <table>
+        <tr>
+          <th class="name">NAME</th>
+          <th class="price">PRICE</th>
+          <th class="day_change">1D CHANGE</th>
+          <th class="market_cap">MARKET CAP</th>
+        </tr>
+        {{#each updatedCurrencies as |currency|}}
+        <tr>
+          {{> currency-info currency}}
+        </tr>
+        {{/each}}
+      </table>
+      </div>
   </div>
 </div>
+
+
+<script src="/javascript/add-currency.js"></script>

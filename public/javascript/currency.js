@@ -8,15 +8,17 @@ async function getPrice(currency) {
 
     for (let i=0; i < currency.length; i++){
       try {
-          const apiUrl = "https://api.lunarcrush.com/v2?data=assets&key="+ process.env.API_KEY +"&symbol=" + currency[i].currency;
+          const apiUrl = "https://api.lunarcrush.com/v2?data=assets&key="+ process.env.API_KEY +"&symbol=" + currency[i].symbol;
           
           const response = await axios.get(apiUrl);
           const results = response.data;
           const currencyObject = {
-              currency: results.data[0].symbol,
+              id: currency[i].id,
+              symbol: results.data[0].symbol,
               currency_name: results.data[0].name,
-              price: results.data[0].price,
-              curr_ownd: currency[i].curr_ownd
+              price: (results.data[0].price).toFixed(2),
+              day_change: results.data[0].percent_change_24h,
+              market_cap: results.data[0].market_cap
           }
           updatedCurrencies.push(currencyObject);
       }
@@ -39,14 +41,17 @@ async function getPrice(currency) {
 
   else {
     try {
-      const apiUrl = "https://api.lunarcrush.com/v2?data=assets&key="+ process.env.API_KEY +"&symbol=" + currency.currency;
+      const apiUrl = "https://api.lunarcrush.com/v2?data=assets&key="+ process.env.API_KEY +"&symbol=" + currency.symbol;
       
       const response = await axios.get(apiUrl);
       const results = response.data;
       const currencyObject = {
-          currency: results.data[0].symbol,
-          currency_name: results.data[0].name,
-          price: results.data[0].price
+        id: currency.id,
+        symbol: results.data[0].symbol,
+        currency_name: results.data[0].name,
+        price: (results.data[0].price).toFixed(2),
+        day_change: results.data[0].percent_change_24h,
+        market_cap: results.data[0].market_cap
       }
       return currencyObject;
     }

@@ -199,3 +199,20 @@ h4 {
 .username {
   padding-top: 25px;
 }
+
+th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}  
+
+table {
+  margin: auto;
+  color: white;
+  justify-content: space-between;
+}
+
+.new-user-currency {
+  color: white;
+  margin: auto;
+  justify-content: space-around;
+}

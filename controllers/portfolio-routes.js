@@ -1,73 +1,69 @@
 // Dependencies
 const router = require("express").Router();
-const sequelize = require("../config/connection");
-const {
-    Post,
-    User,
-    Currency
-} = require("../models");
+const { User, Currency } = require("../models");
+const getPrice = require('../public/javascript/currency');
 
 const withAuth = require('../utils/auth');
 
 // Get all currencies for dashboard
 router.get('/', withAuth, (req, res) => {
-    Currency.findAll({
-            where: {
-                id: req.session.id
-            },
-            attributes: [
-                'id',
-                'currency'
-            ],
-            include: [{
-                model: User,
-                attributes: ['username']
-            }]
-        })
-        .then(dbCurrencyData => {
-            const currency = dbCurrencyData.map(post => post.get({
-                plain: true
-            }));
-            res.render('portfolio', {
-                currency,
-                loggedIn: true
-            });
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
-});
-
-// Edit currencies on dashboard
-router.get('/edit/:id', withAuth, (req, res) => {
-    Currency.findByPk(req.params.id, {
-            attributes: [
-                'id',
-                'currency'
-            ],
-            include: [{
-                model: User,
-                attributes: ['username'],
-            }]
-        })
-        .then(dbCurrencyData => {
-            if (dbCurrencyData) {
-                const currency = dbCurrencyData.get({
-                    plain: true
-                });
-
-                res.render('edit-currency', {
-                    currency,
-                    loggedIn: true
-                });
-            } else {
-                res.status(404).end();
+    User.findOne({
+        attributes: {
+            exclude: ['password']
+        },
+        where: {
+            id: req.session.user_id
+        },
+        include: [{
+                model: Currency,
+                attribute: ['symbol']
             }
-        })
-        .catch(err => {
-            res.status(500).json(err);
-        });
+        ]
+    })
+    .then(dbUserData => {
+        if (!dbUserData) {
+            res.status(404).json({
+                message: 'No user found with this id'
+            });
+            return;
+        }
+        const user = dbUserData.get({plain: true});
+        getPrice(user.currencies)
+            .then(updatedCurrencies => {
+                if (updatedCurrencies.length > 1){
+                    updatedCurrencies.sort((a, b) => b.market_cap - a.market_cap);
+                }
+                user.currencies = updatedCurrencies;
+                
+                Currency.findAll({
+                    attributes: ['id', 'symbol']
+                })
+                .then(dbCurrencyData => {
+                    
+                    // res.json(dbCurrencyData);
+        
+                    const currencies = dbCurrencyData.map(currency => currency.get({
+                        plain: true
+                    }));
+                    
+                    res.render('portfolio', {user, currencies, loggedIn: true});
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(500).json(err);
+                });
+                // res.render('portfolio', {user, loggedIn: true});
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+        
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 });
 
 module.exports = router;
