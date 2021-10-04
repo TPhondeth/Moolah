@@ -1,4 +1,3 @@
-// Dependencies
 const router = require("express").Router();
 const sequelize = require("../config/connection");
 const {
@@ -9,7 +8,7 @@ const {
 
 const withAuth = require('../utils/auth');
 
-// Get all currencies for dashboard
+
 router.get('/', withAuth, (req, res) => {
     Currency.findAll({
             where: {
@@ -28,44 +27,13 @@ router.get('/', withAuth, (req, res) => {
             const currency = dbCurrencyData.map(post => post.get({
                 plain: true
             }));
-            res.render('portfolio', {
+            res.render('holding', {
                 currency,
                 loggedIn: true
             });
         })
         .catch(err => {
             console.log(err);
-            res.status(500).json(err);
-        });
-});
-
-// Edit currencies on dashboard
-router.get('/edit/:id', withAuth, (req, res) => {
-    Currency.findByPk(req.params.id, {
-            attributes: [
-                'id',
-                'currency'
-            ],
-            include: [{
-                model: User,
-                attributes: ['username'],
-            }]
-        })
-        .then(dbCurrencyData => {
-            if (dbCurrencyData) {
-                const currency = dbCurrencyData.get({
-                    plain: true
-                });
-
-                res.render('edit-currency', {
-                    currency,
-                    loggedIn: true
-                });
-            } else {
-                res.status(404).end();
-            }
-        })
-        .catch(err => {
             res.status(500).json(err);
         });
 });

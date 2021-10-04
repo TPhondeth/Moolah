@@ -1,14 +1,15 @@
 <section>
-    <h2>Add Currency</h2>
+    <h2 style="padding-top: 25px; padding-bottom: 25px">Add Currency</h2>
 
     <form class="new-currency-form">
         <div>
-            <label for="currency" style="color:#f5db65;line-height: 2;padding-right: 42px;">Currency</label>
+            <label for="currency" style="color:#f5db65; padding-right: 30px">Currency Abbreviation Symbol</label>
             <input type="text" id="currency" name="currency" />
         </div>
+
         <div>
-            <label for="currency-name" style="color:#f5db65">Currency Name</label>
-            <input id="currency_name" name="currency_name" />
+            <label for="curr_ownd" style="color:#f5db65; line-height: 2">How Many Currency Do You Own?</label>
+            <input id="curr_ownd" name="curr_ownd" />
         </div>
         <div class="add">
             <button type="submit" class="btn">Add</button>
@@ -16,18 +17,11 @@
     </form>
 </section>
 
-{{#if currencies.length}}
-<section>
-    <h2>Your Currencies</h2>
-    <ol>
-        {{#each currency posts }}
-        <li>
-            {{> currency-info post}}
-            <a href="/portfolio/edit/{{currency.id}}" class="edit-link">Edit Currency</a>
-        </li>
-        {{/each}}
-    </ol>
-</section>
-{{/if}}
 
-<script src="/javascript/add-post.js"></script>
+<section>
+    <a href="/holding">
+        <h2>Go To Your Holdings</h2>
+    </a>
+</section>
+
+<script src="/javascript/add-currency.js"></script>

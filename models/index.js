@@ -2,7 +2,6 @@
 const Currency = require('./Currency');
 const Post = require('./Post');
 const User = require('./User');
-const Exchange = require('./Exchange');
 const UserCurrency = require('./User-Currency');
 
 
@@ -38,6 +37,5 @@ module.exports = {
     User,
     Post,
     Currency,
-    Exchange,
     UserCurrency
 };

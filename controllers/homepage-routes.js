@@ -5,7 +5,6 @@ const {
     Post,
     User,
     Currency,
-    Exchange
 } = require("../models");
 const getPrice = require('../public/javascript/currency')
 
@@ -23,7 +22,7 @@ router.get('/', (req, res) => {
             attributes: ['username', 'email'],
             include: {
                 model: Currency,
-                attributes: ['id', 'currency', 'currency_name', 'price']
+                attributes: ['id', 'currency']
             }
         }]
     })
@@ -43,14 +42,11 @@ router.get('/', (req, res) => {
 
 // Login page
 router.get('/login', (req, res) => {
-    
-
     res.render("login");
 });
 
 // Sign up page
 router.get('/signup', (req, res) => {
-
     res.render('signup');
 });
 
