@@ -15,7 +15,8 @@ async function getPrice(currency) {
           const currencyObject = {
               currency: results.data[0].symbol,
               currency_name: results.data[0].name,
-              price: results.data[0].price
+              price: results.data[0].price,
+              curr_ownd: currency[i].curr_ownd
           }
           updatedCurrencies.push(currencyObject);
       }
