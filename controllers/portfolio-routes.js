@@ -11,7 +11,7 @@ router.get("/", withAuth, (req, res) => {
     where: {
       id: req.session.id,
     },
-    attributes: ["id", "currency"],
+    attributes: ["id", "currency", "curr_ownd", "price"],
     include: [
       {
         model: User,

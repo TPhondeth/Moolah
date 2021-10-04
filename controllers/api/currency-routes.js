@@ -10,7 +10,6 @@ router.get("/", (req, res) => {
       "id",
       "currency",
       // 'currency_name',
-      "price",
     ],
   })
     .then((dbCurrencyData) => {
@@ -44,7 +43,7 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "currency", "currency_name", "price"],
+    attributes: ["id", "currency"],
   })
     .then((dbCurrencyData) => {
       if (!dbCurrencyData) {
@@ -74,7 +73,7 @@ router.post("/", withAuth, (req, res) => {
   // expects {currency: 'BTC', currency_name: 'BITCOIN', price: 43016.58}
   Currency.create({
     currency: req.body.currency,
-    currency_name: req.body.currency_name,
+
     price: req.session.price,
   })
     .then((dbCurrencyData) => res.json(dbCurrencyData))
