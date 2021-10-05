@@ -59,7 +59,7 @@ Moolah is envisioned as a focal point for all the information related to cryptoc
 
 ## Deployed on Heroku(URL)
 
-https://git.heroku.com/moolahwallet.git
+https://moolahwallet.herokuapp.com/
 
 ## Credits
 
