@@ -34,7 +34,7 @@ header {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  height: 75px;
+  height: 120px;
 }
 
 .site-logo img {
@@ -55,6 +55,7 @@ header nav ul {
   justify-content: space-between;
   align-items: center;
   list-style: none;
+  padding-top: 10px;
 }
 
 header nav ul li a {
@@ -87,7 +88,7 @@ button {
 button:hover {
   cursor: pointer;
   background-color: var(--secondary-color);
-  color: var(--tertiary-color)
+  color: var(--tertiary-color);
 }
 
 button:active {
@@ -184,6 +185,11 @@ h2 {
   border-radius: 10px;
 }
 
+h4 {
+  font-size: 25px;
+  color: var(--secondary-color);
+}
+
 .login,
 .signup,
 .add {
@@ -193,4 +199,46 @@ h2 {
 .email,
 .username {
   padding-top: 25px;
+}
+
+th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}  
+
+table {
+  margin: auto;
+  color: white;
+  justify-content: space-between;
+}
+
+.new-user-currency {
+  color: white;
+  margin: auto;
+  justify-content: space-around;
+}
+
+.portfolio,
+.name,
+.price,
+.day_change,
+.market_cap {
+  color: var(--secondary-color);
+}
+
+.portfolioTitle {
+  text-align: center;
+  padding-top: 50px;
+  font-size: 25px;
+}
+
+.tableNews,
+.tableExchanges {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.tableCap {
+  margin-top: -150px;
+  padding-bottom: 20px;
 }

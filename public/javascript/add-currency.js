@@ -1,26 +1,23 @@
 async function newFormHandler(event) {
     event.preventDefault();
 
-    const currency = document.querySelector('input[name="currency"]').value;
-    const currency_name = document.querySelector('input[name="currency_name"]').value;
+    const symbol = document.querySelector('input[name="currency_symbol"]').value.toUpperCase();
 
     const response = await fetch(`/api/currencies`, {
-        method: 'POST',
-        body: JSON.stringify({
-            currency,
-            currency_name,
-            price
-        }),
+        method: "POST",
+        body: JSON.stringify({symbol}),
         headers: {
-            'Content-Type': 'application/json'
-        }
+            "Content-Type": "application/json",
+        },
     });
 
     if (response.ok) {
-        document.location.replace('/portfolio');
+        document.location.replace("/");
     } else {
         alert(response.statusText);
     }
 }
 
-document.querySelector('.new-currency-form').addEventListener('submit', newFormHandler);
+document
+    .querySelector(".new-currency-form")
+    .addEventListener("submit", newFormHandler);
