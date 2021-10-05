@@ -45,8 +45,7 @@ router.get('/', withAuth, (req, res) => {
                     const currencies = dbCurrencyData.map(currency => currency.get({
                         plain: true
                     }));
-                    
-                    res.render('portfolio', {user, currencies, loggedIn: true});
+                    res.render('portfolio', {user, currencies});
                 })
                 .catch(err => {
                     console.log(err);

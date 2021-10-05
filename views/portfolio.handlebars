@@ -2,13 +2,13 @@
 <section class='container'>
     <div class="list-chart" style="margin-top: 100px;">
         <h2 class="portfolioTitle">Cryptocurrency Portfolio</h2>
-        <div class="new-user-currency">
-            <input type="hidden" id="user_id" name="user_id" value="{{user.id}}">
-            <label for="selectCurrencies" style="color:#f5db65; font-size: 15px; font-weight: bold">Choose a Cryptocurrency:</label>
+        <div id="new-user-currency">
+            <input type="hidden" id="userId" name="userId" value="{{user.id}}"></input>
 
             <select name="selectCurrencies" id="selectCurrencies">
+                <option value="" disabled selected>Pick a Cryptocurrency</option>
                 {{#each currencies as |currency|}}
-                    <option value="{{currency.id}}">{{currency.symbol}}</option>
+                <option value="{{currency.id}}">{{currency.symbol}}</option>
                 {{/each}}
             </select>
 

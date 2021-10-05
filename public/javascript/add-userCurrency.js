@@ -1,10 +1,12 @@
-async function newFormHandler(event) {
+async function addUserCurrencyHandler(event) {
     event.preventDefault();
 
-    const user_id = parseInt(document.querySelector('input[name="user_id"]').value);
-    const currency_id = parseInt(document.querySelector('select[name="selectCurrencies"]').value);
+    const user_id = document.querySelector("input[name='userId']").value;
+    const currency_id = document.querySelector("select[name='selectCurrencies']").value;
     console.log(user_id);
     console.log(currency_id);
+
+    document.querySelector("#new-user-currency").reset();
 
     const response = await fetch(`/api/usercurrency`, {
         method: "POST",
@@ -25,5 +27,5 @@ async function newFormHandler(event) {
 }
 
 document
-    .querySelector(".new-user-currency")
-    .addEventListener("submit", newFormHandler);
+    .querySelector("#new-user-currency")
+    .addEventListener("submit", addUserCurrencyHandler);

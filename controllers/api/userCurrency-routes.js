@@ -6,7 +6,6 @@ const withAuth = require('../../utils/auth');
 
 // add currency to user
 router.post('/', withAuth, (req, res) => {
-    // expects {currency: 'BTC', currency_name: 'BITCOIN', price: 43016.58}
     UserCurrency.create({
             user_id: req.body.user_id,
             currency_id: req.body.currency_id
