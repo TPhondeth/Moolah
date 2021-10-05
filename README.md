@@ -47,15 +47,15 @@ Moolah is envisioned as a focal point for all the information related to cryptoc
 
 ### **Homepage**
 
-<img width="1434" alt="Screen Shot 2021-10-03 at 5 42 43 PM" src="https://user-images.githubusercontent.com/48960710/135780556-267e54ae-a17e-4579-8e7d-19678371708b.png">
+<img width="1439" alt="Screen Shot 2021-10-04 at 9 00 38 PM" src="https://user-images.githubusercontent.com/77017355/135944665-33b8b850-9bb4-4473-99bb-9bbd43fed4dc.png">
 
 ### **Sign Up**
 
-<img width="1438" alt="Screen Shot 2021-10-03 at 5 50 50 PM" src="https://user-images.githubusercontent.com/48960710/135780612-9c902996-8c01-4b5b-b913-0fe9cb37c2fa.png">
+<img width="1439" alt="Screen Shot 2021-10-04 at 9 02 05 PM" src="https://user-images.githubusercontent.com/77017355/135944696-3b7249f3-1b09-421e-8eaa-de7d1be49378.png">
 
-### **Add a crytpocurrency to your personal account**
+### **Cryptocurrency Portfolio**
 
-<img width="1438" alt="Screen Shot 2021-10-03 at 5 50 50 PM" src="https://user-images.githubusercontent.com/48960710/135780676-d15e5124-6af7-4960-be4f-b4566f95a120.png">
+<img width="1439" alt="Screen Shot 2021-10-04 at 9 00 09 PM" src="https://user-images.githubusercontent.com/77017355/135944744-aad99782-a917-45aa-8310-6548afaa2ddd.png">
 
 ## Deployed on Heroku(URL)
 
